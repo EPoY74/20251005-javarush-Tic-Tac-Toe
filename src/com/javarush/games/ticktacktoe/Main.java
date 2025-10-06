@@ -5,6 +5,7 @@ import com.javarush.engine.cell.*;
 public class TicTacToeGame extends Game {
     private int[][] model = new int[3][3];
     private int currentPlayer;
+    private boolean isGameStopped;
 
     public void initialize(){
         setScreenSize(3,3);
@@ -13,6 +14,7 @@ public class TicTacToeGame extends Game {
     }
 
     public void startGame(){
+        isGameStopped = false;
         for (int i = 0; i < model.length; i++){
             for (int j = 0; j < model[i].length; j++){
                 model[i][j] = 0;
@@ -64,7 +66,7 @@ public class TicTacToeGame extends Game {
      * @param y :Position (coordinate) on the game field
      */
     public void onMouseLeftClick(int x, int y){
-        if (model[x][y] != 0){
+        if ((isGameStopped)||(model[x][y] != 0)) {
             return;
         }
         else {
