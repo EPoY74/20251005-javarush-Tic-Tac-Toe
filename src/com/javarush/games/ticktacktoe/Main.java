@@ -64,9 +64,14 @@ public class TicTacToeGame extends Game {
      * @param y :Position (coordinate) on the game field
      */
     public void onMouseLeftClick(int x, int y){
-        model[x][y] = currentPlayer;
-        updateView();
-        currentPlayer = 3 - currentPlayer;
+        if (model[x][y] != 0){
+            return;
+        }
+        else {
+            model[x][y] = currentPlayer;
+            updateView();
+            currentPlayer = 3 - currentPlayer;
+        }
     }
 
 }
